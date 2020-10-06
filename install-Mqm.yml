@@ -1,0 +1,11 @@
+---
+- hosts: current
+  gather_facts: yes
+#  become: true
+#  become_user: root
+#  become_method: pbrun
+
+  tasks:
+    - local_action: ansibleplus_mw Host={{ HOSTNAME }} package={{item.name}} verison={{item.version}} action=install
+      with_items:
+         - { name: 'mqm', version: '8.0.0.11-Linux64' }
